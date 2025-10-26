@@ -1,0 +1,16 @@
+services:
+  graphhopper:
+    image: israelhikingmap/graphhopper:10.2
+    container_name: graphhopper-import
+    environment:
+      - JAVA_OPTS=-Xms2g -Xmx4g -XX:+HeapDumpOnOutOfMemoryError
+    volumes:
+      - ./data:/data
+      - ./graph-cache:/graph-cache
+      - ./config:/config
+      - ./custom_models:/custom_models
+    working_dir: /graphhopper
+    command: >
+      import
+      -c /config/config.yml
+    restart: "no"

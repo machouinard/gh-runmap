@@ -1,0 +1,32 @@
+graphhopper:
+  datareader.file: /data/region.osm.pbf        # your file path; keep as-is if you used "region.osm.pbf"
+  graph.location: /graph-cache                 # keep mount you already use
+  import.osm.ignored_highways: []              # explicitly present, nothing ignored
+
+  profiles:
+    - name: foot
+      custom_model_files: [foot.json]          # built-in model
+
+  profiles_ch:
+    - profile: foot
+  profiles_lm: []
+
+  # union: your Mac EVs + surface/track_type (safe, gives the model more knobs)
+  graph.encoded_values: road_class, road_class_link, road_environment, max_speed, road_access, foot_access, foot_average_speed, hike_rating, country, foot_road_access, mtb_rating, surface, track_type, foot_priority
+
+server:
+  application_connectors:
+    - type: http
+      port: 8989
+      bind_host: 0.0.0.0
+  admin_connectors:
+    - type: http
+      port: 8990
+      bind_host: 0.0.0.0
+
+logging:
+  level: INFO
+  appenders:
+    - type: console
+      time_zone: UTC
+      log_format: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"

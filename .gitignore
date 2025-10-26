@@ -1,0 +1,18 @@
+# runtime/cache
+graph-cache/
+*.log
+*.tmp
+
+# map data (keep these out; they get big)
+data/*.pbf
+data/*.osm.pbf
+data/*.osm.bz2
+
+# binaries (we'll fetch jars, not commit them)
+bin/*.jar
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
