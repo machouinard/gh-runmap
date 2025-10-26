@@ -1,4 +1,5 @@
 graphhopper:
+  custom_models.directory: /custom_models
   datareader.file: /data/region.osm.pbf        # your file path; keep as-is if you used "region.osm.pbf"
   graph.location: /graph-cache                 # keep mount you already use
   import.osm.ignored_highways: []              # explicitly present, nothing ignored
@@ -6,9 +7,12 @@ graphhopper:
   profiles:
     - name: foot
       custom_model_files: [foot.json]          # built-in model
+    - name: run
+      custom_model_files: [run_10k.json]
 
   profiles_ch:
     - profile: foot
+    - profile: run
   profiles_lm: []
 
   # union: your Mac EVs + surface/track_type (safe, gives the model more knobs)

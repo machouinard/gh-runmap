@@ -9,5 +9,6 @@ docker run -d --name graphhopper \
   -v "$PWD":/work \
   -v "$PWD/data":/data \
   -v "$PWD/graph-cache":/graph-cache \
+  -v "$PWD/custom_models":/custom_models \
   -w /work eclipse-temurin:21-jre \
   sh -lc 'exec java -Xms2g -Xmx4g -jar bin/graphhopper-web.jar server config/config.yml'

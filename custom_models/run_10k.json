@@ -1,0 +1,27 @@
+{
+  "distance_influence": 0,
+  "priority": [
+    { "if": "!foot_access || road_access == PRIVATE", "multiply_by": 0 },
+
+    { "if": "road_class == STEPS", "multiply_by": 0.6 },
+
+    { "if": "road_class == FOOTWAY || road_class == PATH || road_class == PEDESTRIAN || road_class == LIVING_STREET", "multiply_by": 1.3 },
+    { "if": "road_class == MOTORWAY || road_class == TRUNK || road_class == PRIMARY || road_class == SECONDARY", "multiply_by": 0.2 },
+
+    { "if": "hike_rating >= 3", "multiply_by": 0.1 },
+    { "if": "hike_rating == 2", "multiply_by": 0.6 },
+
+    { "if": "track_type == GRADE1", "multiply_by": 1.1 },
+    { "if": "track_type == GRADE4 || track_type == GRADE5", "multiply_by": 0.7 },
+
+    { "if": "surface == COMPACTED || surface == FINE_GRAVEL || surface == ASPHALT || surface == PAVED || surface == CONCRETE", "multiply_by": 1.1 },
+    { "if": "surface == SAND || surface == GRASS || surface == DIRT || surface == GROUND", "multiply_by": 0.7 }
+  ],
+  "speed": [
+    { "if": "true", "limit_to": 10 },
+    { "if": "road_class == STEPS", "limit_to": 2.5 },
+    { "if": "hike_rating >= 3", "limit_to": 4 },
+    { "if": "surface == COMPACTED || surface == FINE_GRAVEL || surface == ASPHALT || surface == PAVED || surface == CONCRETE", "limit_to": 10.5 },
+    { "if": "surface == SAND || surface == GRASS || surface == DIRT || surface == GROUND", "limit_to": 8 }
+  ]
+}
